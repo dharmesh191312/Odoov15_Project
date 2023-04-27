@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_school_book_tree" model="ir.ui.view">
+        <field name="name">school.book.tree.view</field>
+        <field name="model">school.book</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="name"/>
+                <field name="author"/>
+                <field name="publisher"/>
+                <field name="pages"/>
+                <field name="price"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_school_book_form" model="ir.ui.view">
+        <field name="name">school.book.form.view</field>
+        <field name="model">school.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="author"/>
+                            <field name="publisher"/>
+                        </group>
+                        <group>
+                            <field name="pages"/>
+                            <field name="price"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Testing Many2many in Book">
+                            <field name="student_taken_ids" widget="many2many_tags"/>
+                        </page>
+                    </notebook>
+                    <!--                    <notebook>-->
+                    <!--                        <page string="Remarks" name="remarks">-->
+                    <!--                            <group>-->
+                    <!--                                <field name="name"/>-->
+                    <!--                            </group>-->
+                    <!--                        </page>-->
+                    <!--                        <page string="HTML FIELD">-->
+                    <!--                            <field name="html_field"/>-->
+                    <!--                        </page>-->
+                    <!--                        <page string="Books" name="books">-->
+                    <!--                            <group>-->
+                    <!--                                <field name="age"/>-->
+                    <!--                            </group>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_school_book_search" model="ir.ui.view">
+        <field name="name">school.book.search.view</field>
+        <field name="model">school.book</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="author"/>
+                <field name="publisher"/>
+                <field name="pages"/>
+                <field name="price"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_school_book" model="ir.actions.act_window">
+        <field name="name">Book</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.book</field>
+        <!--            <field name="view_id" ref="view_quotation_tree_with_onboarding"/>-->
+        <field name="view_mode">tree,kanban,form,pivot,graph,activity</field>
+        <!--            <field name="search_view_id" ref="sale_order_view_search_inherit_quotation"/>-->
+        <field name="context">{}</field>   <!-- It is visible in context tab visible in the window action section. -->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Book record!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="book_details_menu"
+              name="Books Details"
+              sequence="0"
+              action="action_school_book"
+              parent="book_menu"/>
+</odoo>

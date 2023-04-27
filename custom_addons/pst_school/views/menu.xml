@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <menuitem id="school_main_menu"
+              name="School"
+              sequence="0"/>
+    <menuitem id="student_menu"
+              name="Students"
+              sequence="0"
+              parent="school_main_menu"/>
+    <menuitem id="teacher_menu"
+              name="Teachers"
+              sequence="10"
+              parent="school_main_menu"/>
+    <menuitem id="book_menu"
+              name="Books"
+              sequence="20"
+              parent="school_main_menu"/>
+    <menuitem id="example_wizard_menu"
+              name="Example Wizard Menu"
+              sequence="10"
+              action="action_example_something"
+              parent="student_menu"/>
+</odoo>

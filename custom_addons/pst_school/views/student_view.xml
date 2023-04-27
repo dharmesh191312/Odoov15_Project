@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_school_student_tree" model="ir.ui.view">
+        <field name="name">school.student.tree.view</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="date_of_birth"/>
+                <field name="dob_time"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_school_student_form" model="ir.ui.view">
+        <field name="name">school.student.form.view</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="%(pst_school.action_school_student)d"
+                            string="Student Action Button" type="action"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="age"/>
+                            <field name="name"/>
+                            <field name="fav_subject"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="date_of_birth"/>
+                            <field name="dob_time"/>
+                            <field name="teachers_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Remarks" name="remarks">
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </page>
+                        <page string="HTML FIELD">
+                            <field name="html_field"/>
+                        </page>
+                        <page string="Books" name="books">
+                            <group>
+                                <field name="age"/>
+                            </group>
+                        </page>
+                        <page string="Testing One2many">
+
+                        </page>
+                        <page string="Testing Many2many in students">
+                            <field name="books_taken_ids"/>
+                            <field name="total_price"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_school_student_search" model="ir.ui.view">
+        <field name="name">school.student.search.view</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Student Name" filter_domain="[ '|', ('name', self), ('age', self)]"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="date_of_birth"/>
+                <field name="dob_time"/>
+
+            </search>
+        </field>
+
+
+    </record>
+
+    <record id="action_school_student" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.student</field>
+        <!--            <field name="view_id" ref="view_quotation_tree_with_onboarding"/>-->
+        <field name="view_mode">tree,kanban,form,pivot,graph,activity</field>
+        <!--            <field name="search_view_id" ref="sale_order_view_search_inherit_quotation"/>-->
+        <field name="context">{}</field>   <!-- It is visible in context tab visible in the window action section. -->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Student record!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="student_details_menu"
+              name="Student Details"
+              sequence="0"
+              action="action_school_student"
+              parent="student_menu"/>
+</odoo>
